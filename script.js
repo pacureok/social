@@ -1,15 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Detectar si el usuario viene desde una URL específica (ej. https://pacureok.github.io/social/?from=YT o ?ref=youtube)
+  // Leer la URL exacta que está en la barra de direcciones del navegador
   const urlParams = new URLSearchParams(window.location.search);
-  const source = urlParams.get('from') || urlParams.get('ref') || urlParams.get('src');
-
-  const banner = document.getElementById('referrer-banner');
-
-  if (source && banner) {
-    const cleanSource = source.toUpperCase();
+  const fromValue = urlParams.get('from'); // Busca "?from=ALGO"
+  
+  // Si existe el parámetro "from" en la URL...
+  if (fromValue) {
+    const banner = document.getElementById('referrer-banner');
     
-    // Muestra un mensaje personalizado indicando desde dónde vinieron
-    banner.textContent = `¡Gracias por venir desde ${cleanSource}! 👋`;
-    banner.classList.remove('hidden');
+    if (banner) {
+      // Pone el nombre en mayúsculas (ej: youtube -> YOUTUBE)
+      const plataforma = fromValue.toUpperCase();
+      
+      // Escribe el texto
+      banner.textContent = `¡Gracias por venir desde ${plataforma}! 👋`;
+      
+      // Fuerza a que el banner sea visible (cambia display: none a display: block)
+      banner.style.display = 'block';
+    }
   }
 });
