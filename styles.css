@@ -39,6 +39,25 @@ body {
   font-size: 1rem;
 }
 
+/* Banner de origen - OCULTO POR DEFECTO */
+.banner {
+  display: none; /* Se mantiene oculto hasta que JS lo active */
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background-color: #0ea5e9;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .social-grid {
   display: flex;
   flex-direction: column;
@@ -76,19 +95,4 @@ body {
 .social-name {
   flex-grow: 1;
   text-align: left;
-}
-
-/* Banner de origen */
-.banner {
-  margin-top: 20px;
-  padding: 12px 16px;
-  background-color: #0284c7;
-  color: #ffffff;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.hidden {
-  display: none;
 }
