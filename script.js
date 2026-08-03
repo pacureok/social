@@ -1,18 +1,15 @@
-// Agrega un saludo dinámico según la hora del día en el encabezado
 document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('.profile-header p');
-  const hour = new Date().getHours();
-  
-  let greeting = '¡Bienvenido a mi perfil!';
-  if (hour >= 6 && hour < 12) {
-    greeting = '¡Buenos días! Conéctate conmigo aquí:';
-  } else if (hour >= 12 && hour < 20) {
-    greeting = '¡Buenas tardes! Conéctate conmigo aquí:';
-  } else {
-    greeting = '¡Buenas noches! Conéctate conmigo aquí:';
-  }
+  // Detectar si el usuario viene desde una URL específica (ej. https://pacureok.github.io/social/?from=YT o ?ref=youtube)
+  const urlParams = new URLSearchParams(window.location.search);
+  const source = urlParams.get('from') || urlParams.get('ref') || urlParams.get('src');
 
-  if (header) {
-    header.textContent = greeting;
+  const banner = document.getElementById('referrer-banner');
+
+  if (source && banner) {
+    const cleanSource = source.toUpperCase();
+    
+    // Muestra un mensaje personalizado indicando desde dónde vinieron
+    banner.textContent = `¡Gracias por venir desde ${cleanSource}! 👋`;
+    banner.classList.remove('hidden');
   }
 });
